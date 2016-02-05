@@ -1,0 +1,65 @@
+{
+  "swagger" : "2.0",
+  "host" : "localhost:28080",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "specific_alarm"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/uploadImage" : {
+      "post" : {
+        "tags" : [ "specific_alarm" ],
+        "summary" : "uploads an image of car",
+        "description" : "",
+        "operationId" : "uploadFiles",
+        "consumes" : [ "multipart/form-data" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "formData",
+          "description" : "name",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "file",
+          "in" : "formData",
+          "description" : "file detail",
+          "required" : true,
+          "type" : "file"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/uploadImages" : {
+      "post" : {
+        "tags" : [ "specific_alarm" ],
+        "summary" : "uploads images of cars",
+        "description" : "",
+        "operationId" : "uploadMultipleFiles",
+        "consumes" : [ "multipart/form-data" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "files",
+          "in" : "formData",
+          "description" : "file detail",
+          "required" : true,
+          "type" : "array",
+          "items" : {
+            "type" : "file"
+          },
+          "collectionFormat" : "multi"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    }
+  }
+}
